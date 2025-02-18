@@ -19,18 +19,18 @@ export default async function Home() {
           </h1>
           <SearchBar />
         </header>
-            <section className="space-y-6 mb-12">
-              <h2 className="text-2xl font-semibold text-gray-200">Now Playing</h2>
-              <MovieCarousel movies={nowPlaying} />
-            </section>
-            <section className="space-y-6">
-              <h2 className="text-2xl font-semibold text-gray-200">Popular Movies</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {movies.map((movie: Movie) => (
-                  <MovieCard key={movie.id} movie={movie} />
-                ))}
-              </div>
-            </section>
+        <section className="space-y-6 mb-12">
+          <h2 className="text-2xl font-semibold text-gray-200">Now Playing</h2>
+          <MovieCarousel movies={nowPlaying} />
+        </section>
+        <section className="space-y-6">
+          <h2 className="text-2xl font-semibold text-gray-200">Popular Movies</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {movies.map((movie: Movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+          </div>
+        </section>
       </div>
     </main>
   );

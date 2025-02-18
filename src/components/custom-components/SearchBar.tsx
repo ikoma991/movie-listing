@@ -1,10 +1,18 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { FiSearch } from 'react-icons/fi';
 
-export default function SearchBar() {
+const SearchBar = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SearchBarContent />
+    </Suspense>
+  );
+};
+
+const SearchBarContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('query') || '');
@@ -42,4 +50,6 @@ export default function SearchBar() {
       </div>
     </div>
   );
-}
+};
+
+export default SearchBar;

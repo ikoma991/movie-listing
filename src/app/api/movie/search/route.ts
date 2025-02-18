@@ -6,7 +6,7 @@ export async function GET(request: Request) {
     const query = searchParams.get('query');
     
     try {   
-        const data = await Tmdb.fetchFromTMDB(`/search/movie?query=${query}`);
+        const data = await Tmdb.searchMovie(query || '');
         return NextResponse.json(data, { status: 200 });
     } catch (error: unknown) {
         if (error instanceof Error) {
