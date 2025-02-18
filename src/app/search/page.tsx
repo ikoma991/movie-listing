@@ -12,7 +12,7 @@ export default async function Search( {
 
     const {query = ''} = await searchParams;
 
-    let searchResults: Movie[] = await Tmdb.searchMovie(query);
+    const searchResults: Movie[] = await Tmdb.searchMovie(query);
 
 
     return (
