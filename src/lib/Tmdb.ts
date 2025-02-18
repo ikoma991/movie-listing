@@ -2,7 +2,7 @@ import { Movie, MovieDetails } from "@/lib/types";
 
 export default class Tmdb {
 
-  public static baseUrl = process.env.APP_PUBLIC_BASE_URL;
+  public static baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
   public static apiKey = process.env.TMDB_API_KEY;
 
   public static async fetchFromTMDB(endpoint: string) {
