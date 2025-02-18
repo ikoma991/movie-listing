@@ -1,4 +1,4 @@
-import { Movie } from "@/lib/types";
+import { Movie, MovieDetails } from "@/lib/types";
 
 export default class Tmdb {
 
@@ -28,13 +28,33 @@ export default class Tmdb {
 
 
   public static async fetchPopularMovies(): Promise<Movie[]> {
-    const res = await fetch(`${this.baseUrl}/api/tmdb/movie/popular`);
+    const res = await fetch(`${this.baseUrl}/api/movie/popular`);
     if (!res.ok) {
       throw new Error('Failed to fetch popular movies');
     }
   
     const data = await res.json();
     return data.results || [];
+  }
+
+  public static async fetchNowPlayingMovies(): Promise<Movie[]> {
+    const res = await fetch(`${this.baseUrl}/api/movie/now-playing`);
+    if (!res.ok) {
+      throw new Error('Failed to fetch now playing movies');
+    }
+  
+    const data = await res.json();
+    return data.results || [];
+  }
+
+  public static async fetchMovieDetails(id: number): Promise<MovieDetails> {
+    const res = await fetch(`${this.baseUrl}/api/movie/${id}`);
+    if (!res.ok) {
+      throw new Error('Failed to fetch movie details');
+    }
+  
+    const data = await res.json();
+    return data;
   }
 
 }

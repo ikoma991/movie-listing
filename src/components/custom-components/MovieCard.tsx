@@ -4,12 +4,12 @@ import { Movie } from '@/lib/types';
 const MovieCard: React.FC<{ movie: Movie }> = ({ movie }) => {
     const {title, vote_average, poster_path, release_date, original_language} = movie
     return (
-        <Card className="p-5 rounded-2xl shadow-inner shadow-light-100/10">
+        <Card className="p-5 rounded-2xl shadow-inner shadow-light-100/10 h-full">
             <CardContent>
             <img
                 src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
                 alt={title}
-                className="rounded-lg h-auto w-full"
+                className="rounded-lg w-full"
             />
             </CardContent>
             <CardFooter className="flex-col">
