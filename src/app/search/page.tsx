@@ -2,18 +2,19 @@ import MovieCard from "@/components/custom-components/MovieCard";
 import Tmdb from "@/lib/Tmdb";
 import { Movie } from "@/lib/types";
 import SearchBar from "@/components/custom-components/SearchBar";
-
+import { redirect } from 'next/navigation'
 
 export default async function Search( {
     searchParams,
   }: {
-    searchParams: { query?: string };
+    searchParams: Promise<{ query: string }>
   }) {
-
-    const {query = ''} = await searchParams;
-
+    const {query} = (await searchParams);
+    if(query === '' || !query) {
+        redirect('/');
+        return;
+    }
     const searchResults: Movie[] = await Tmdb.searchMovie(query);
-
 
     return (
         <main>
