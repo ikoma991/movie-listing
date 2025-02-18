@@ -57,4 +57,14 @@ export default class Tmdb {
     return data;
   }
 
+  public static async searchMovie(query: string): Promise<Movie[]> {
+    const res = await fetch(`${this.baseUrl}/api/movie/search?query=${query}`);
+    if (!res.ok) {
+      throw new Error('Failed to search movies');
+    }
+  
+    const data = await res.json();
+    return data.results || [];
+  }
+
 }
