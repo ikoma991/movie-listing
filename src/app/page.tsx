@@ -1,19 +1,12 @@
 import MovieCard from "@/components/custom-components/MovieCard";
+import MovieCarousel from "@/components/custom-components/MovieCarousel";
 import Tmdb from '@/lib/Tmdb'
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+
 
 export default async function Home() {
   const movies = await Tmdb.fetchPopularMovies();
   const nowPlaying = await Tmdb.fetchNowPlayingMovies();
-
-  console.log(movies[0].id)
 
   return (
     <main>
@@ -27,25 +20,11 @@ export default async function Home() {
 
           <h2>Now playing Movies</h2>
 
-          <Carousel
-            opts={{
-              align: "start",
-            }}
-            className="w-full max-w-full"
-          >
-            <CarouselContent>
-              {nowPlaying.map((movie, index) => (
-                <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/4">
-                  <MovieCard
-                        movie={movie}
-                        key={movie.id}
-                      />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+          <MovieCarousel
+            movies={nowPlaying}
+          />
+
+
 
         </section>
         <section className="space-y-9">
