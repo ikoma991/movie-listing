@@ -3,7 +3,7 @@ import Tmdb from '@/lib/Tmdb';
 
 export async function GET() {
   try {
-    const data = await Tmdb.fetchFromTMDB('/movie/now_playing');
+    const data = await Tmdb.fetchNowPlayingMovies();
     return NextResponse.json(data, { status: 200 });
   } catch (error: unknown) {
     if (error instanceof Error) {

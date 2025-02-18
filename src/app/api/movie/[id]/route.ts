@@ -6,7 +6,7 @@ export async function GET(request: NextRequest , {params} : {
 }) {
     try {
         const id = (await params).id;
-        const data = await Tmdb.fetchFromTMDB(`/movie/${id}`);
+        const data = await Tmdb.fetchMovieDetails(Number(id));
         return NextResponse.json(data, { status: 200 });
     } catch (error: unknown) {
         if (error instanceof Error) {
