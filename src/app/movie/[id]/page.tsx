@@ -7,7 +7,7 @@ export default async function MovieDetailsPage({
     params: Promise<{ id: string }>
 }) {
     const id = (await params).id;
-    const data = await Tmdb.fetchMovieDetails(Number(id)).catch((error) => {
+    const data = await Tmdb.fetchMovieDetails(Number(id)).catch(() => {
         redirect('/')
     });
     
